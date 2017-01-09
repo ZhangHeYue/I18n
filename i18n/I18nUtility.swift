@@ -12,6 +12,7 @@ private let userLanguageKey = "userLanguage"
 private let lprojType = "lproj"
 
 enum Language: String {
+    
     case en = "en"
     case zh = "zh-Hans"
     
@@ -23,6 +24,7 @@ enum Language: String {
             return "_zh"
         }
     }
+    
 }
 
 class I18nUtility {
@@ -49,7 +51,7 @@ class I18nUtility {
         let def = UserDefaults.standard
         let string = def.value(forKey: userLanguageKey) as? String
         guard let strongString = string else {
-            return ""
+            fatalError()
         }
         switch strongString {
         case Language.en.rawValue:
@@ -114,7 +116,11 @@ extension Date {
 extension String {
     
     func localizedString() -> String {
-        return NSLocalizedString(self, tableName: nil, bundle: I18nUtility.shareInstance.bundle, value: "", comment: "")
+        return self.localizedString(string: "")
+    }
+    
+    func localizedString(string: String) -> String {
+        return String(format: NSLocalizedString(self, tableName: nil, bundle: I18nUtility.shareInstance.bundle, value: "", comment: ""), string)
     }
     
 }
