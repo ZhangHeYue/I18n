@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  i18n
+
+  Created by 张和悦 on 2017/1/9.
+  Copyright © 2017年 com.ZHY. All rights reserved.
+*/
+
+"BUTTON_TITLE" = "switch";
+"DATE_TITLE" = "YYYY MMMM DD";
